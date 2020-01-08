@@ -1,0 +1,43 @@
+<!--miniprogram/pages/home/home.wxml-->
+<!-- 搜索内容 -->
+<view class="search">
+	<view class="search_one">
+		<input type="text" placeholder="请输入想听的歌曲" bindinput="getmuic"></input>
+	</view>
+	<view class="search_two" bindtap="search">
+		<text>搜索</text>
+	</view>
+</view>
+
+<!-- 列表 -->
+<view class="micu_list">
+	<scroll-view scroll-y='true' bindscrolltolower='hole' style="height:600rpx;">
+		<view class="list">
+			<view class="item" wx:for='{{muiclist}}' wx:key='index'>
+				<!-- 封面 -->
+				<view class="item_img">
+          <view class="item_imgo" data-sid="{{item.songid}}" data-src="{{item.url}}" wx:if='{{item.songid != ismuic}}' bindtap="changep">
+            <image src="../../images/play.png"></image>
+          </view>
+          <view class="item_imgo" wx:if='{{item.songid == ismuic}}' bindtap="changep">
+            <image src="../../images/pause.png"></image>
+          </view>
+          <view class="item_imgt">
+					  <image src="{{item.pic}}"></image>
+          </view>
+				</view>
+				<!-- 详细内容 -->
+				<view class="item_det">
+					<!-- 歌曲名称 -->
+					<view class="item_aut">
+						<text>{{item.title}}</text>
+					</view>
+					<!-- 作者 -->
+					<view class="item_nam">
+						<text>{{item.author}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</scroll-view>
+</view>
