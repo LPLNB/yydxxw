@@ -1,43 +1,117 @@
 <!--miniprogram/pages/home/home.wxml-->
-<!-- 搜索内容 -->
-<view class="search">
-	<view class="search_one">
-		<input type="text" placeholder="请输入想听的歌曲" bindinput="getmuic"></input>
-	</view>
-	<view class="search_two" bindtap="search">
-		<text>搜索</text>
-	</view>
-</view>
+<view class="contioner">
 
-<!-- 列表 -->
-<view class="micu_list">
-	<scroll-view scroll-y='true' bindscrolltolower='hole' style="height:600rpx;">
-		<view class="list">
-			<view class="item" wx:for='{{muiclist}}' wx:key='index'>
-				<!-- 封面 -->
-				<view class="item_img">
-          <view class="item_imgo" data-sid="{{item.songid}}" data-src="{{item.url}}" wx:if='{{item.songid != ismuic}}' bindtap="changep">
-            <image src="../../images/play.png"></image>
-          </view>
-          <view class="item_imgo" wx:if='{{item.songid == ismuic}}' bindtap="changep">
-            <image src="../../images/pause.png"></image>
-          </view>
-          <view class="item_imgt">
-					  <image src="{{item.pic}}"></image>
-          </view>
+	<!-- 搜索 -->
+	<view class="search" bindtap="search">
+		<view class="search_img">
+			<image src="../../images/search.png"></image>
+		</view>
+		<view class="search_text">
+			<text>搜索</text>
+		</view>
+	</view>
+
+	<!-- 轮播图 -->
+	<view class="swiper">
+		<swiper autoplay="true" indicator-dots="true" circular="true">
+			<block wx:for="{{images}}" wx:key="index">
+				<swiper-item>
+					<view class="swiper_img">
+						<image src="{{item}}"></image>
+					</view>
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
+
+	<!-- 排行榜 -->
+	<view class="music_ranking">
+		<view class="ranking_name">
+			<text>歌曲榜单</text>
+		</view>
+		<view class="ranking_list">
+			<view class="ranking_item" wx:for="{{ranklist}}" wx:key="index">
+				<!-- 音乐插图 -->
+				<view class="rank_img">
+					<swiper autoplay="true" circular="true">
+						<swiper-item>
+							<image src="{{item.pic_s192}}"></image>
+						</swiper-item>
+						<swiper-item>
+							<image src="{{item.pic_s210}}"></image>
+						</swiper-item>
+						<swiper-item>
+							<image src="{{item.pic_s260}}"></image>
+						</swiper-item>
+						<swiper-item>
+							<image src="{{item.pic_s444}}"></image>
+						</swiper-item>
+					</swiper>
 				</view>
-				<!-- 详细内容 -->
-				<view class="item_det">
-					<!-- 歌曲名称 -->
-					<view class="item_aut">
-						<text>{{item.title}}</text>
+				<!-- 音乐信息 -->
+				<view class="rank_con">
+					<view class="top">
+						<text>{{item.name}}</text>
 					</view>
-					<!-- 作者 -->
-					<view class="item_nam">
-						<text>{{item.author}}</text>
-					</view>
+					<!-- <view class="bot">
+						<text>{{item.comment}}</text>
+					</view> -->
 				</view>
 			</view>
 		</view>
-	</scroll-view>
+	</view>
+
+	<!-- 音乐电台 -->
+  <view class="muic_dt">
+    <view class="muic_name">
+      <text>音乐电台</text>
+    </view>
+    <view class="list">
+      <view class="item" wx:for="{{muic_w}}" wx:key="index">
+        <view class="item_name">
+          <view class="letfs">
+           <text>{{item.title}}</text>
+          </view>
+          <view class="rights">
+           <text>查看更多>></text>
+          </view>
+        </view>
+        <!-- 公共频道 -->
+        <view class="item_list" wx:if="{{item.title == '公共频道'}}">
+          <view class="items" wx:for="{{item.channellist}}" wx:key="indexs">
+            <view class="items_img">
+              <image src="{{item.thumb}}"></image>
+            </view>
+            <view class="item_name">
+              <text>{{item.name}}</text>
+            </view>
+          </view>
+        </view>
+        <!-- 音乐人频道 -->
+        <view class="item_list" wx:if="{{item.title == '音乐人频道'}}">
+          <view class="items" wx:for="{{item.channellist}}" wx:key="indexs">
+            <view class="items_img">
+              <image src="{{item.avatar}}"></image>
+            </view>
+            <view class="item_name">
+              <text>{{item.name}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 和燕燕在一起多长时间了 -->
+  <view class="love" wx:if="{{love == '1314'}}">
+    <view class="btn" bindtap="hided">
+      <image src="../../images/clos.png"></image>
+    </view>
+    <view class="love_img">
+      <image src="../../images/love.png"></image>
+    </view>
+    <view class="love_text">
+      <text>和燕燕在一起已经{{loves}}</text>
+    </view>
+  </view>
 </view>

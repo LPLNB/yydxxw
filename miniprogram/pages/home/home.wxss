@@ -1,37 +1,163 @@
 /* miniprogram/pages/home/home.wxss */
-.search {
+/* 最外层 */
+.contioner {
+  text-align: start;
+}
+
+/* 搜索框 */
+.contioner .search {
+  width: 80%;
+  margin: 20rpx auto 0;
   display: flex;
   flex-flow: row;
   justify-content: center;
   align-items: center;
-  padding-top: 40rpx;
+  border-radius: 10rpx;
+  background-color:#f2f2f2;
 }
 
-/* 搜索框 */
-.search .search_one {
-  margin-right: 20rpx;
-  padding-left: 20rpx;
-  border: 1px solid #ffffff;
+/* 搜索框图片 */
+.contioner .search .search_img {
+  width: 32rpx;
+  height: 34rpx;
+  margin: 16rpx 18rpx 14rpx 0;
 }
 
-.search .search_one input {
-  width: 400rpx;
-  font-size: 24rpx;
-  text-indent: 10rpx;
+.contioner .search .search_img image {
+  width: 100%;
+  height: 100%;
 }
 
-/* 搜索 */
-.search .search_two {
-  font-size: 28rpx;
+/* 搜索框字体 */
+.contioner .search .search_text {
+  font-size: 32rpx;
+  color: #A9A9A9;
+  font-weight: 500;
 }
 
-/* 歌曲列表 */
-.micu_list {
+/* 轮播图 */
+.contioner .swiper {
   width: 90%;
-  margin: 50rpx auto 0;
+  margin: 20rpx auto 0;
 }
 
-.micu_list .list {
+/* 音乐排行榜 */
+.contioner .music_ranking {
+  width: 90%;
+  margin: 20rpx auto 0;
+}
+
+.contioner .music_ranking .ranking_name {
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 20rpx;
+}
+
+.contioner .music_ranking .ranking_list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.contioner .music_ranking .ranking_list .ranking_item {
+  width: 200rpx;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.contioner .music_ranking .ranking_list .ranking_item .rank_img {
+  width: 200rpx;
+  height: 200rpx;
+  padding: 20rpx;
+}
+
+.contioner .music_ranking .ranking_list .ranking_item .rank_img image {
+  width: 100%;
+  height: 200rpx;
+}
+
+/* 音乐作者 */
+.contioner .music_ranking .ranking_list .ranking_item .rank_con {
+  width: 200rpx;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.contioner .music_ranking .ranking_list .ranking_item .rank_con .top {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #666666;
+  padding-bottom: 10rpx;
+}
+
+.contioner .music_ranking .ranking_list .ranking_item .rank_con .bot {
+  width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+/* 音乐电台 */
+.contioner .muic_dt {
+  width: 90%;
+  margin: 20rpx auto 0;
+}
+
+.contioner .muic_dt .muic_name {
+  padding: 20rpx;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+/* 列表 */
+.contioner .muic_dt .list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 50rpx;
+} 
+
+.contioner .muic_dt .list .item {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.contioner .muic_dt .list .item .item_name {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contioner .muic_dt .list .item .item_name .letfs {
+  padding: 20rpx;
+  font-size: 32rxp;
+  font-weight: 500;
+  color: #333333;
+}
+
+
+.contioner .muic_dt .list .item .item_name .rights {
+  padding: 20rpx;
+  font-size: 24rxp;
+  font-weight: 500;
+  color: #666666;
+}
+
+/* 内容 */
+.contioner .muic_dt .list .item .item_list {
   width: 100%;
   display: flex;
   flex-flow: column;
@@ -39,40 +165,73 @@
   align-items: center;
 }
 
-.micu_list .list .item {
+.contioner .muic_dt .list .item .item_list .items {
   width: 100%;
   display: flex;
   flex-flow: row;
   justify-content: flex-start;
   align-items: center;
-  border-bottom: 1px solid #ffffff;
+  border-top: 1px solid #f2f2f2;
 }
 
-.micu_list .list .item .item_img {
-  position: relative;
-}
-
-.micu_list .list .item .item_img .item_imgo {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.micu_list .list .item .item_img .item_imgo image {
+.contioner .muic_dt .list .item .item_list .items .items_img {
   width: 80rpx;
   height: 80rpx;
-}
-
-.micu_list .list .item .item_img .item_imgt {
-  width: 100rpx;
-  height: 100rpx;
   padding: 20rpx;
 }
 
-.micu_list .list .item .item_img .item_imgt image {
+.contioner .muic_dt .list .item .item_list .items .items_img image {
   width: 100%;
   height: 100%;
 }
+
+.contioner .muic_dt .list .item .item_list .items .item_name {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #666666;
+} 
+
+
+/* love */
+.contioner .love {
+  width: 80%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-end;
+  position: fixed;
+  left: 10%;
+  top: 30%;
+}
+
+.contioner .love .btn {
+  width: 50rpx;
+  height: 50rpx;
+  padding-bottom: 20rpx;
+}
+
+.contioner .love .btn image {
+  width: 100%;
+  height: 100%;
+}
+
+.contioner .love .love_img {
+  width: 100%;
+  height: 264rpx;
+}
+
+.contioner .love .love_img image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+
+.contioner .love .love_text {
+  width: 360rpx;
+  position: relative;
+  bottom: 200rpx;
+  right: 60rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #ffffff;
+} 

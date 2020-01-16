@@ -1,85 +1,111 @@
 // miniprogram/pages/home/home.js
-const myaudio = wx.createInnerAudioContext()
+import { gettime } from '../../components/goldjs/times'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    muictext: '', //输入框中的歌词
-    muiclist: [], //歌曲列表
-    ismuic:true, // 播放或者暂停
+    images: [
+      '../../images/yanyan1.png',
+      '../../images/yanyan2.png',
+      '../../images/yanyan3.png'
+    ],
+    ranklist: [], //排行榜
+    // 音乐电台
+    muic_w: [], //外层
+    muic_l: [], //内层
+
+    // love
+    loves:"",
+    love:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-
-  // 获取搜索框中的内容
-  getmuic(e) {
-    console.log(e.detail.value)
     this.setData({
-      muictext: e.detail.value
+      love:'1314'
     })
   },
 
-  // 搜索歌曲
-  search() {
-    let muictext = this.data.muictext
-    wx.showLoading({
-      title: '请稍后',
-    })
+  // 获取排行榜
+  getranking() {
     wx.request({
-      url: `https://api.apiopen.top/searchMusic?name=${muictext}`,
+      url: 'https://api.apiopen.top/musicRankings',
+      method: 'GET',
+      data: {},
       success: (res) => {
         console.log(res)
         this.setData({
-          muiclist: res.data.result
+          ranklist: res.data.result
         })
-        wx.hideLoading({})
       },
       fail: (err) => {
         console.log(err)
-        wx.hideLoading({})
       }
     })
   },
-  
-  // 滑动到底部
-  hole() {
-    console.log("到底了")
+  // 获取音乐电台
+  getmuicdt() {
+    wx.request({
+      url: 'https://api.apiopen.top/musicBroadcasting',
+      method: 'GET',
+      success: (res) => {
+        console.log(res)
+        let muicw = res.data.result
+        for (let i = 0; i < muicw.length; i++) {
+          var muicl = muicw[i].channellist.slice(0, 5)
+          muicw[i].channellist = muicl
+          res.data.result = muicw
+        }
+        console.log(res)
+        this.setData({
+          muic_w: res.data.result
+        })
+      },
+      fail: (err) => { }
+    })
   },
-  // 切换暂停播放
-  changep(e) {
-    console.log(e.currentTarget.dataset.sid)
-    console.log(e.currentTarget.dataset.src)
-    let src = e.currentTarget.dataset.src
-    if(e.currentTarget.dataset.sid){
+  // 获取时间
+  gettimes() {
+    let times = gettime("2018/08/29")
+    if(times){
+      let lovetime = `${times.year}年${times.month}月${times.day}日${times.hour}时${times.minute}分${times.second}秒`
       this.setData({
-        ismuic: e.currentTarget.dataset.sid
+        loves: lovetime
       })
-      myaudio.src = src
-      myaudio.onCanplay(()=>{
-        console.log("请稍后")
-      })
-      myaudio.play()
-    }else if(!e.currentTarget.dataset.sid){
+    } else if(!times) {
+      let lovetime = `00年00月00日00时00分00秒`
       this.setData({
-        ismuic: "不是"
+        loves: lovetime
       })
-      myaudio.pause()
     }
+    setTimeout(()=>{this.gettimes()},500)
+  },
+  // 隐藏
+  hided() {
+    this.setData({
+      love:"521"
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.getranking(); //获取排行榜数据
+    this.getmuicdt(); //获取音乐电台
+    this.gettimes()//获取时间
   },
 
+
+  // 跳转搜索页面
+  search() {
+    wx.navigateTo({
+      url: '../../listmuicon/pages/search/search',
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

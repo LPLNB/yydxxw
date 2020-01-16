@@ -1,0 +1,42 @@
+<!--listmuicon/pages/search/search.wxml-->
+<view class="search">
+	<view class="search_cont">
+		<!-- 搜索框 -->
+		<view class="search_left">
+			<view class="left_img">
+				<image src='../../../images/search.png'></image>
+			</view>
+			<view class="left_inp">
+				<input type="text" placeholder="搜索" bindinput="getinp"></input>
+			</view>
+		</view>
+		<!-- 搜索 -->
+		<view class="search_right" bindtap="getmusic">
+			<view class="search_text">
+				<text>搜索</text>
+			</view>
+		</view>
+	</view>
+	<!-- 搜索结果 -->
+	<view class="search_result">
+		<view class="search_list">
+			<view class="search_item" wx:for="{{music_list}}" wx:key="index" bindtap="skip" data-pic="{{item.pic}}" data-url="{{item.url}}">
+				<!-- 图片 -->
+				<view class="item_left">
+					<view class="image">
+						<image src="{{item.pic}}"></image>
+					</view>
+				</view>
+				<!-- 文字内容 -->
+				<view class="item_text">
+					<view class="text_top">
+						<text>{{item.title}}</text>
+					</view>
+					<view class="text_bot">
+						<text>{{item.author}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

@@ -1,2 +1,49 @@
 <!--listmuicon/pages/listen/listen.wxml-->
-<text>listmuicon/pages/listen/listen.wxml</text>
+<view class="music_play">
+  <view class="muisic_cont">
+    <view class="muisic_list">
+      <!-- 图片 -->
+      <view class="muisic_item">
+        <view class="muisic_image">
+          <image src="{{pic}}" class="{{pause?'pause':''}}"></image>
+        </view>
+      </view>
+      <!-- 播放 -->
+      <view class="muisic_playitem">
+        <view class="top">
+          <!-- 活动时间 -->
+          <view class="min_time">
+            <text>{{dongtai == ''?'00:00':dongtai}}</text>
+          </view>
+          <slider class="sliders" block-size='20' min="0" max="{{values}}" value="{{setps}}" bindchange="sliderchange"></slider>
+          <!-- 固定时间时间 -->
+          <view class="min_time">
+            <text>{{alldate == ''?'00:00':alldate}}</text>
+          </view>
+        </view>
+        <view class="bot">
+          <view class="left item">
+            <view class="image">
+              <!-- <image src="../../../images/play.png"></image> -->
+            </view>
+          </view>
+          <view class="mid item" wx:if="{{pause == false}}">
+            <view class="image" bindtap="pauses">
+              <image src="../../../images/pause.png"></image>
+            </view>
+          </view>
+          <view class="mid item" wx:if="{{pause == true}}">
+            <view class="image" bindtap="pauses">
+              <image src="../../../images/play.png"></image>
+            </view>
+          </view>
+          <view class="right item">
+            <view class="image">
+              <!-- <image src="../../../images/play.png"></image> -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

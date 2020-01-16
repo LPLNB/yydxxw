@@ -1,0 +1,115 @@
+/* listmuicon/pages/search/search.wxss */
+.search {}
+
+.search .search_cont {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  padding:  0 56rpx 20rpx 48rpx;
+  box-sizing: border-box;
+  margin-top: 30rpx;
+}
+
+.search .search_cont .search_left {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #F2F2F2;
+  padding: 18rpx 0 16rpx 26rpx;
+  border-radius: 20rpx;
+}
+
+.search .search_cont .search_left .left_img {
+  width: 32rpx;
+  height: 34rpx;
+  margin-right: 18rpx;
+}
+
+.search .search_cont .search_left .left_img image {
+  width: 100%;
+  height: 100%;
+}
+
+.search .search_cont .search_left .left_inp {
+  font-size: 16px;
+  font-weight: 500;
+  color: #A9A9A9;
+  padding-right: 80rpx;
+}
+
+.search .search_cont .search_right {}
+
+.search .search_cont .search_right .search_text {
+  font-size: 13px;
+  font-weight: 500;
+  color: #A9A9A9;
+}
+
+/* 列表 */
+.search .search_result {
+
+}
+
+.search .search_result .search_list {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx;
+  border-top: 1px solid #F2F2F2;
+}
+
+.search .search_result .search_list .search_item {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid #F2F2F2;
+}
+
+.search .search_result .search_list .search_item .item_left {
+  margin-right: 30rpx;
+}
+
+.search .search_result .search_list .search_item .item_left .image {
+  width: 100rpx;
+  height: 100rpx;
+  padding: 20rpx;
+}
+
+.search .search_result .search_list .search_item .item_left .image image {
+  width: 100%;
+  height: 100%;
+}
+
+.search .search_result .search_list .search_item .item_text {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.search .search_result .search_list .search_item .item_text .text_top {
+  width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 10rpx;
+}
+
+.search .search_result .search_list .search_item .item_text .text_bot {
+  width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 500;
+  color: #999999;
+}

@@ -19,7 +19,8 @@
     {
       "root": "listmuicon",
       "pages": [
-        "pages/listen"
+        "pages/listen/listen",
+        "pages/search/search"
       ]
     }
   ],

@@ -1,1 +1,91 @@
 /* listmuicon/pages/listen/listen.wxss */
+.music_play {}
+
+.music_play .muisic_cont {}
+
+.music_play .muisic_cont .muisic_list {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.music_play .muisic_cont .muisic_list .muisic_item {}
+
+.music_play .muisic_cont .muisic_list .muisic_item .muisic_image {
+  width: 300rpx;
+  height: 300rpx;
+  padding-top: 50rpx;
+}
+
+.music_play .muisic_cont .muisic_list .muisic_item .muisic_image image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  animation: myfirst 10s linear infinite;
+}
+
+/* 动画 */
+@keyframes myfirst {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.music_play .muisic_cont .muisic_list .muisic_item .muisic_image .pause {
+  animation-play-state: paused;
+}
+
+/* 播放组件 */
+.music_play .muisic_cont .muisic_list .muisic_playitem {
+  width: 100%;
+  margin-top: 30rpx;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.music_play .muisic_cont .muisic_list .muisic_playitem .top {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+}
+
+.music_play .muisic_cont .muisic_list .muisic_playitem .top .sliders {
+  width: 100%;
+}
+
+/* 播放组件 */
+.music_play .muisic_cont .muisic_list .muisic_playitem .bot {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.music_play .muisic_cont .muisic_list .muisic_playitem .bot {
+  box-sizing: border-box;
+  padding: 20rpx 40rpx;
+}
+
+.music_play .muisic_cont .muisic_list .muisic_playitem .bot .item .image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.music_play .muisic_cont .muisic_list .muisic_playitem .bot .item .image image {
+  width: 100%;
+  height: 100%;
+}
